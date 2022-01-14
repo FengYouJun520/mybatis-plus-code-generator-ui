@@ -1,14 +1,13 @@
 {
   "name": "mybatis-plus-代码生成器",
   "assetdir": "frontend/dist",
-  "frontend:build": "tyarn build",
-  "frontend:install": "tyarn",
+  "frontend:build": "npm run build",
+  "frontend:install": "npm install",
   "frontend:dev": "",
   "wailsjsdir": "./frontend",
   "version": "2",
   "Path": "",
   "BuildDir": "",
-  "outputfilename": "mybatis-plus-代码生成器.exe",
   "OutputType": "",
   "Platform": "",
   "Author": {
