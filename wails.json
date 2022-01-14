@@ -5,6 +5,7 @@
   "frontend:install": "npm install",
   "frontend:dev": "",
   "wailsjsdir": "./frontend",
+  "outputfilename": "mybatis-plus-代码生成器",
   "version": "2",
   "Path": "",
   "BuildDir": "",

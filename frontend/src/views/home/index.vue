@@ -209,10 +209,10 @@ const execute = () => {
 
   // @ts-ignore
   window.go.codegen.Manager.CodeGenerate(configContext)
-    .then((msg: string) => {
+    .then((msg: any) => {
       message.success(msg)
     })
-    .catch((err: string) => {
+    .catch((err: any) => {
       message.error(err)
     })
     .finally(() => {

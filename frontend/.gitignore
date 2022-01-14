@@ -3,4 +3,6 @@ node_modules
 dist
 dist-ssr
 *.local
-wailsjs
+pnpm-lock.yaml
+package.json.md5
+package-lock.json
