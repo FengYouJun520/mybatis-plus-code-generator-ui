@@ -1,0 +1,15 @@
+{
+	"fixed": {
+		"file_version": "1.0.0"
+	},
+	"info": {
+		"0000": {
+			"ProductVersion": "1.0.0",
+			"CompanyName": "mybatis-plus-code-generator",
+			"FileDescription": "mybatis-plus-code-generator",
+			"LegalCopyright": "Copyright.........",
+			"ProductName": "mybatis-plus-code-generator",
+			"Comments": "Built using Wails (https://wails.app)"
+		}
+	}
+}

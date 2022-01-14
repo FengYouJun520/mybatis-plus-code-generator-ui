@@ -1,0 +1,21 @@
+{
+  "name": "mybatis-plus-代码生成器",
+  "assetdir": "frontend/dist",
+  "frontend:build": "tyarn build",
+  "frontend:install": "tyarn",
+  "frontend:dev": "",
+  "wailsjsdir": "./frontend",
+  "version": "2",
+  "Path": "",
+  "BuildDir": "",
+  "outputfilename": "mybatis-plus-代码生成器.exe",
+  "OutputType": "",
+  "Platform": "",
+  "Author": {
+    "name": "FengYouJun",
+    "email": "845225187@qq.com"
+  },
+  "debounceMS": 100,
+  "devserverurl": "http://localhost:34115",
+  "appargs": ""
+}
