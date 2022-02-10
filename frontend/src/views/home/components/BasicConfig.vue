@@ -51,9 +51,7 @@
     <n-form-item style="display: flex; justify-content: center">
       <n-space :size="24">
         <n-button type="error" @click="basicState.clear">重置</n-button>
-        <n-button type="primary" @click="testLink" :loading="testLoadding">
-          测试连接
-        </n-button>
+        <n-button type="primary" @click="testLink"> 测试连接 </n-button>
       </n-space>
     </n-form-item>
   </n-form>
@@ -82,11 +80,8 @@ const message = useMessage()
 const basicState = useBasic()
 const strategy = useStrategy()
 const appState = useApp()
-const testLoadding = ref(false)
 
 const testLink = () => {
-  testLoadding.value = true
-  // @ts-ignore
   window.go.main.App.PingDb(basicState.dataSource)
     .then((options: DatabaseOptions[] | Error) => {
       appState.setOptions(options as DatabaseOptions[])
@@ -97,9 +92,6 @@ const testLink = () => {
       strategy.clearAddIncludes()
       appState.clearOptions()
       message.error(err)
-    })
-    .finally(() => {
-      testLoadding.value = false
     })
 }
 </script>

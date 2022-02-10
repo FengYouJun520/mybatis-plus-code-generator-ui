@@ -13,7 +13,7 @@ export default defineConfig({
       },
       {
         find: '~wails',
-        replacement: resolve(__dirname, 'wailsjs'),
+        replacement: resolve(__dirname, 'src/wailsjs'),
       },
     ],
   },

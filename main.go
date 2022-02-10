@@ -25,8 +25,8 @@ func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:             "mybatis-plus代码生成器",
-		Width:             1400,
-		Height:            900,
+		Width:             1200,
+		Height:            800,
 		MinWidth:          720,
 		MinHeight:         570,
 		MaxWidth:          1920,

@@ -14,12 +14,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "~wails/*": ["wailsjs/*"]
+      "~wails/*": ["src/wailsjs/*"]
     }
   },
   "include": [
     "src/**/*.ts", "src/**/*.d.ts", 
     "src/**/*.tsx", "src/**/*.vue", 
-    "wailsjs/**/*.ts", "wailsjs/**/*.d.ts", 
   ]
 }

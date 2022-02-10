@@ -1,4 +1,4 @@
-interface go {
+export interface go {
   codegen: {
     Manager: {
       CodeGenerate(arg1: ConfigContext): Promise<string | Error>
@@ -20,4 +20,3 @@ declare global {
     go: go
   }
 }
-export {}
