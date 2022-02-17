@@ -51,7 +51,7 @@
     <n-form-item style="display: flex; justify-content: center">
       <n-space :size="24">
         <n-button type="error" @click="basicState.clear">重置</n-button>
-        <n-button type="primary" @click="testLink"> 测试连接 </n-button>
+        <n-button type="primary" @click="testConnection"> 测试连接 </n-button>
       </n-space>
     </n-form-item>
   </n-form>
@@ -81,7 +81,7 @@ const basicState = useBasic()
 const strategy = useStrategy()
 const appState = useApp()
 
-const testLink = () => {
+const testConnection = () => {
   window.go.main.App.PingDb(basicState.dataSource)
     .then((options: DatabaseOptions[] | Error) => {
       appState.setOptions(options as DatabaseOptions[])

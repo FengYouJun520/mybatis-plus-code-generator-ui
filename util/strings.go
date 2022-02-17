@@ -27,6 +27,7 @@ func SnakecaseToCamel(s string) string {
 		s = s[1:]
 	}
 	lines := strings.Split(s, "_")
+	lines[0] = strings.ToLower(lines[0])
 
 	for i := 1; i < len(lines); i++ {
 		line := caseser.String(lines[i])
@@ -35,7 +36,7 @@ func SnakecaseToCamel(s string) string {
 	return strings.Join(lines, "")
 }
 
-// ToKebabcase 将驼峰命名转为以-横线连接的kebabcase风格
+// ToKebabcase 将驼峰命名转为以-短横线连接的kebabcase风格
 func CamelToKebabcase(s string) string {
 	var buf bytes.Buffer
 	for i, v := range s {

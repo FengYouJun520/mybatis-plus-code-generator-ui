@@ -127,7 +127,6 @@ import {
   NTag,
   useMessage,
 } from 'naive-ui'
-import { h, ref } from 'vue'
 import {
   ConfigContext,
   DataSourceConfig,

@@ -94,6 +94,10 @@ func TestSnakecaseToCamel(t *testing.T) {
 			input:  "_sys_user_role_",
 			expect: "sysUserRole",
 		},
+		{
+			input:  "_Sys_user_role_",
+			expect: "sysUserRole",
+		},
 	}
 
 	for _, v := range tests {

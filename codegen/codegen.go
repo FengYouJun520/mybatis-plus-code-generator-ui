@@ -315,6 +315,7 @@ func (m *Manager) createTable(tableInfo *TableInfo, className string, importPack
 	columns := tableInfo.Columns
 	var fieldNames []string
 	var fields []Field
+
 	for _, column := range columns {
 		// 如果当前字段是父类公共字段或在忽略字段中，则不存储字段信息
 		if _, ok := util.InSlice(superEntityColumns, column.Name); ok {
@@ -323,15 +324,17 @@ func (m *Manager) createTable(tableInfo *TableInfo, className string, importPack
 		if _, ok := util.InSlice(addIgnoreColumns, column.Name); ok {
 			continue
 		}
+
 		fieldNames = append(fieldNames, column.Name)
 		dataType := TypeMappings[column.DataType]
-		// TODO: bug自动填充字段
+		// 自动填充字段
 		fieldFills := util.MapTo(addFills, func(k FieldTypeKeyVal) string {
 			return k.Name
 		})
 		fill, ok := util.InSlice(fieldFills, column.Name)
 
 		if ok {
+			// 防止重复填充
 			res, _ := util.First(addFills, func(t FieldTypeKeyVal) bool {
 				return t.Name == column.Name
 			})
@@ -375,40 +378,7 @@ func (m *Manager) createTable(tableInfo *TableInfo, className string, importPack
 		}
 		fields = append(fields, field)
 		// 添加所需要的包
-		if importPackage := importPackagesByType(dataType); importPackage != "" {
-			if _, ok := util.InSlice(importPackages, importPackage); ok {
-				importPackages = append(importPackages, importPackage)
-			}
-		}
-		if field.VersionField {
-			if _, ok := util.InSlice(importPackages, VersionPackage); !ok {
-				importPackages = append(importPackages, VersionPackage)
-			}
-		}
-		if field.LogicDeleteField {
-			if _, ok := util.InSlice(importPackages, TableLogicPackage); !ok {
-				importPackages = append(importPackages, TableLogicPackage)
-			}
-		}
-		if field.Fill != "" || field.Convert {
-			if _, ok := util.InSlice(importPackages, TableFieldPackage); !ok {
-				importPackages = append(importPackages, TableFieldPackage)
-			}
-		}
-		if field.KeyIdentityFlag || field.Convert || strategy.Entity.IdType != "" {
-			if _, ok := util.InSlice(importPackages, TableIdPackage); !ok {
-				importPackages = append(importPackages, TableIdPackage)
-			}
-			if _, ok := util.InSlice(importPackages, IdTypePackage); !ok {
-				importPackages = append(importPackages, IdTypePackage)
-			}
-		}
-		if field.Fill != "" {
-			if _, ok := util.InSlice(importPackages, FieldFillPackage); !ok {
-				field.Fill = FieldFill_DEFAULT
-				importPackages = append(importPackages, FieldFillPackage)
-			}
-		}
+		addImportPackage(field, dataType, importPackages, strategy)
 	}
 
 	convert := true
@@ -433,6 +403,43 @@ func (m *Manager) createTable(tableInfo *TableInfo, className string, importPack
 	}
 
 	return t
+}
+
+func addImportPackage(field Field, dataType string, importPackages []string, strategy *StrategyConfig) {
+	if importPackage := importPackagesByType(dataType); importPackage != "" {
+		if _, ok := util.InSlice(importPackages, importPackage); ok {
+			importPackages = append(importPackages, importPackage)
+		}
+	}
+	if field.VersionField {
+		if _, ok := util.InSlice(importPackages, VersionPackage); !ok {
+			importPackages = append(importPackages, VersionPackage)
+		}
+	}
+	if field.LogicDeleteField {
+		if _, ok := util.InSlice(importPackages, TableLogicPackage); !ok {
+			importPackages = append(importPackages, TableLogicPackage)
+		}
+	}
+	if field.Fill != "" || field.Convert {
+		if _, ok := util.InSlice(importPackages, TableFieldPackage); !ok {
+			importPackages = append(importPackages, TableFieldPackage)
+		}
+	}
+	if field.KeyIdentityFlag || field.Convert || strategy.Entity.IdType != "" {
+		if _, ok := util.InSlice(importPackages, TableIdPackage); !ok {
+			importPackages = append(importPackages, TableIdPackage)
+		}
+		if _, ok := util.InSlice(importPackages, IdTypePackage); !ok {
+			importPackages = append(importPackages, IdTypePackage)
+		}
+	}
+	if field.Fill != "" {
+		if _, ok := util.InSlice(importPackages, FieldFillPackage); !ok {
+			field.Fill = FieldFill_DEFAULT
+			importPackages = append(importPackages, FieldFillPackage)
+		}
+	}
 }
 
 // importPackagesByType 标准包的路径导入
