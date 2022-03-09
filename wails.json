@@ -4,6 +4,7 @@
   "frontend:build": "",
   "frontend:install": "pnpm install",
   "frontend:dev": "",
+  "frontend:dev:watcher": "pnpm build:watch",
   "wailsjsdir": "./frontend/src",
   "outputfilename": "mybatis-plus-代码生成器",
   "version": "2",

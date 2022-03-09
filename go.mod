@@ -3,7 +3,7 @@ module code-generator
 go 1.18
 
 require (
-	github.com/wailsapp/wails/v2 v2.0.0-beta.32
+	github.com/wailsapp/wails/v2 v2.0.0-beta.33
 	gorm.io/driver/mysql v1.3.2
 	gorm.io/gorm v1.23.1
 )

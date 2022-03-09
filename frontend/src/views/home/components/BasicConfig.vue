@@ -72,7 +72,6 @@ import {
   NSpace,
   useMessage,
 } from 'naive-ui'
-import { ref } from 'vue'
 import { DatabaseOptions } from '~wails/go/models'
 import { databaseTypeOptions } from '../data'
 

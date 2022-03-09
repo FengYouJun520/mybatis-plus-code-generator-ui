@@ -98,7 +98,7 @@
         block
         @click="execute"
         :disabled="appState.executeDisable"
-        :loading="loadding"
+        :loading="loading"
       >
         执行
       </n-button>
@@ -146,7 +146,7 @@ import StrategyMapper from './strategy/StrategyMapper.vue'
 import StrategyService from './strategy/StrategyService.vue'
 const message = useMessage()
 
-const loadding = ref(false)
+const loading = ref(false)
 const appState = useApp()
 const basicState = useBasic()
 const globalState = useGlobal()
@@ -204,7 +204,7 @@ const execute = () => {
     strategyConfig: StrategyConfig.createFrom(strategyState.strategy),
   })
 
-  loadding.value = true
+  loading.value = true
 
   // @ts-ignore
   window.go.codegen.Manager.CodeGenerate(configContext)
@@ -215,7 +215,7 @@ const execute = () => {
       message.error(err)
     })
     .finally(() => {
-      loadding.value = false
+      loading.value = false
     })
 }
 </script>
