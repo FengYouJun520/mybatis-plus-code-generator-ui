@@ -3,7 +3,7 @@ module code-generator
 go 1.18
 
 require (
-	github.com/wailsapp/wails/v2 v2.0.0-beta.33
+	github.com/wailsapp/wails/v2 v2.0.0-beta.34
 	gorm.io/driver/mysql v1.3.2
 	gorm.io/gorm v1.23.1
 )
@@ -27,7 +27,7 @@ require (
 	github.com/klauspost/compress v1.14.4 // indirect
 	github.com/leaanthony/go-ansi-parser v1.2.0 // indirect
 	github.com/leaanthony/go-common-file-dialog v1.0.3 // indirect
-	github.com/leaanthony/go-webview2 v1.0.3-0.20220125181555-00f20a61c17d // indirect
+	github.com/leaanthony/go-webview2 v1.0.3-0.20220314105146-f44268990abe // indirect
 	github.com/leaanthony/gosod v1.0.3 // indirect
 	github.com/leaanthony/slicer v1.6.0 // indirect
 	github.com/leaanthony/typescriptify-golang-structs v0.1.7 // indirect
